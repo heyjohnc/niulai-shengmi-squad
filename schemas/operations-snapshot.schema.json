@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/niulai-shengmi-squad/operations-snapshot.schema.json",
+  "title": "Sanitized public operations aggregate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_date",
+    "status",
+    "source_mode",
+    "source_run_status",
+    "mixed_runtime_revisions",
+    "raw_records_included",
+    "metrics",
+    "quality_metrics",
+    "exclusions",
+    "cautions"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "snapshot_date": { "type": "string", "format": "date" },
+    "status": { "const": "FROZEN_PUBLIC_AGGREGATE" },
+    "source_mode": { "const": "SANITIZED_AGGREGATE_FROM_PRIVATE_RUNTIME" },
+    "source_run_status": { "enum": ["RUNNING_AT_SNAPSHOT", "CLOSED_AT_SNAPSHOT"] },
+    "mixed_runtime_revisions": { "type": "boolean" },
+    "raw_records_included": { "const": false },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "discovery", "votes", "dialogue", "model_routes"],
+      "properties": {
+        "runtime": { "$ref": "#/$defs/nonNegativeIntegerMap" },
+        "discovery": { "$ref": "#/$defs/nonNegativeIntegerMap" },
+        "votes": { "$ref": "#/$defs/votes" },
+        "dialogue": { "$ref": "#/$defs/dialogue" },
+        "model_routes": { "$ref": "#/$defs/nonNegativeIntegerMap" }
+      }
+    },
+    "quality_metrics": { "$ref": "#/$defs/qualityMetrics" },
+    "exclusions": { "type": "array", "minItems": 8, "uniqueItems": true, "items": { "type": "string" } },
+    "cautions": { "type": "array", "minItems": 5, "uniqueItems": true, "items": { "type": "string" } }
+  },
+  "$defs": {
+    "nonNegativeIntegerMap": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "votes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "round_count",
+        "buy_vote_distribution",
+        "threshold_reached_count",
+        "observe_only_count",
+        "integrity_violation_count"
+      ],
+      "properties": {
+        "round_count": { "type": "integer", "minimum": 0 },
+        "buy_vote_distribution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["0", "1", "2", "3", "4"],
+          "properties": {
+            "0": { "type": "integer", "minimum": 0 },
+            "1": { "type": "integer", "minimum": 0 },
+            "2": { "type": "integer", "minimum": 0 },
+            "3": { "type": "integer", "minimum": 0 },
+            "4": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "threshold_reached_count": { "type": "integer", "minimum": 0 },
+        "observe_only_count": { "type": "integer", "minimum": 0 },
+        "integrity_violation_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "dialogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line_count", "exact_unique_line_count", "exact_unique_ratio", "over_limit_line_count"],
+      "properties": {
+        "line_count": { "type": "integer", "minimum": 0 },
+        "exact_unique_line_count": { "type": "integer", "minimum": 0 },
+        "exact_unique_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "over_limit_line_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "qualityMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision_scoped_latency_published",
+        "revision_scoped_zero_message_rate_published",
+        "reason"
+      ],
+      "properties": {
+        "revision_scoped_latency_published": { "const": false },
+        "revision_scoped_zero_message_rate_published": { "const": false },
+        "reason": { "const": "WAITING_FOR_A_STABLE_REVISION_SCOPED_SAMPLE" }
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 # 牛来生米小队 public reference｜Level 2 Case Study
 
-> 当前阶段：`Level 2 / PRIVATE_STAGING_CANDIDATE`
-> 证据范围：本仓自己的代码、deterministic fixture、injected fake transport、自动测试、本地 API 与浏览器检查。
-> 不包含：private source 运行数据、真实交易、线上部署、真实社交、用户采用或商业结果。
+> 当前阶段：`Level 2 / PUBLIC_REFERENCE_RELEASED`
+> 证据范围：本仓自己的代码、deterministic fixture、injected fake transport、自动测试、本地 API、浏览器检查，以及单独标注的脱敏运行聚合。
+> 不包含：原始运行数据、真实交易明细、线上部署代码、真实社交身份、用户采用或商业结果。
 
 ## 1. 一句话摘要
 
@@ -76,7 +76,9 @@ confirmed revert 可以触发一次同 snapshot retry；pending 和 ambiguous �
 | Axis | Result |
 | --- | --- |
 | `CODE_PRESENT` | yes |
-| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 54 Node test cases plus deterministic validation and security scan passed |
+| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 59 Node test cases plus deterministic validation and security scan passed |
+| `PUBLIC_REFERENCE_RELEASED` | yes; Owner-authorized public visibility and anonymous GitHub access verified |
+| `SANITIZED_RUNTIME_AGGREGATE` | date-stamped aggregate only; raw records absent and not publicly reproducible |
 | `DEPLOYED_DEMO` | `NOT_VALIDATED` |
 | `LIVE_READ_ONLY_VALIDATED` | `NOT_VALIDATED` |
 | `NOT_VALIDATED` | production, real market, money, social, users, business impact |
@@ -85,7 +87,7 @@ confirmed revert 可以触发一次同 snapshot retry；pending 和 ambiguous �
 
 公共仓使用 allowlist/denylist 思路而不是“复制后人工看一眼”。CI 对候选 tracked files 扫描绝对私有路径、source repository identity、地址/长 hash 形状、账号/邀请、secret material 和具体 live mutation primitive，只输出 path 与 category，不打印匹配值。
 
-仓库不配置 CI secret、不部署、不连接外部服务。GitHub staging 即使创建，也必须保持 private；公开 visibility 是 Owner 的独立 go/no-go decision。
+仓库不配置 CI secret、不部署、不连接外部服务。Owner 已单独批准 GitHub public visibility；任何未来部署、provider、钱包、用户数据或写能力仍需新的 go/no-go decision。
 
 ## 8. Contribution boundary
 
@@ -93,13 +95,13 @@ Owner 提供产品目标、名称、恰好四个角色、四票随机机制、3/
 
 开发 Agent 在授权范围内完成 clean-room 架构、实现、测试、UI、文档、安全扫描、浏览器检查和版本证据整理。运行中的四个角色是产品角色，不是仓库开发者。Node.js 和 GitHub 托管属于第三方能力，不拥有产品决策权。
 
-Owner 尚未审阅最终结果，因此 acceptance 保持 `PENDING_OWNER_CONFIRMATION`。创建 private staging 只表示交付候选可供 review，不表示 Owner 接受、更不表示 public release。
+Owner 已审阅并明确授权 public reference 发布。该决定只接受本仓的公开范围和声明，不把生产、真实资金、用户采用或商业结果改写成已验收。
 
 ## 9. Current limitations and next gate
 
 本仓没有真实 provider、真实 API、真实 market semantics、资金、社交、用户或部署证据。safety lab 只是 fake transport。UI 没有账号和权限系统。性能与成本没有测量，状态为 `NOT_MEASURED`。
 
-切换 public visibility 前，Owner 至少需要确认：正式名称与文案、第三方内容声明、贡献边界、案例说明、许可范围、浏览器视觉、private staging 中的完整文件列表，以及 public 后是否允许外部 issue/PR。还需确认没有 release、artifact、PR attachment 或其他旁路文件需要清理。
+public visibility gate 已完成。下一阶段是保持公开安全扫描、处理外部 Issue/PR，并在稳定 revision 有足够样本后发布新的日期化聚合；这不要求复制生产源码或原始遥测。
 
 ## 10. 30-second summary
 

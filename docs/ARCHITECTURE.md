@@ -100,3 +100,9 @@ lab 不是交易实现。它要求 caller 注入 `InjectedFakeTransport`，且 t
 ## UI and assets
 
 UI 使用原生 HTML/CSS/JavaScript，避免新增 runtime dependency。项目 mark 是本仓手写 SVG：四条轨迹围绕一粒抽象种子。它不模仿第三方 Logo 或电影画面。页面只调用同源 GET API；没有表单、钱包按钮、登录、交易或发布控件。
+
+## Sanitized operations evidence
+
+本仓不复制运行系统代码或原始遥测。日期化 operations snapshot 只允许聚合计数、投票完整性、逐字唯一率、provider-neutral 路由计数和零权限越界计数；它必须明确 mixed revision、非 uptime、非语义质量、非收益和不可从 public repo 独立重算。
+
+原始时间线、候选/Token 标识、钱包与链上标识、交易/provider 回执、用户与社交身份、prompt/completion、策略表现、主机和凭证配置全部在 public projection 之前排除。聚合文件通过独立 Schema、算术回归和既有安全扫描，但不因此获得 production evidence 状态。

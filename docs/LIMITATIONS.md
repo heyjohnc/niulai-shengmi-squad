@@ -15,9 +15,9 @@
 
 - 没有 `DEPLOYED_DEMO` 证据。
 - 没有 `LIVE_READ_ONLY_VALIDATED` 证据。
-- 没有真实市场、资金、社交渠道或真实用户证据。
+- 只有日期化脱敏运行聚合，没有原始市场、资金、社交渠道或真实用户证据。
 - 没有可靠性 SLA、性能基准、成本账单、用户研究、采用、收入或商业结果。
-- 没有 Owner acceptance；Owner review 状态为 pending。
+- Owner 只批准了 public reference 可见性；没有对生产、资金、用户采用或商业结果作验收。
 
 ## Legal and content limits
 

@@ -10,8 +10,26 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const failures = [];
 const check = (condition, name) => { if (!condition) failures.push(name); };
 const demoSchema = JSON.parse(await readFile(`${root}/schemas/demo.schema.json`, "utf8"));
+const operationsSchema = JSON.parse(await readFile(`${root}/schemas/operations-snapshot.schema.json`, "utf8"));
+const operationsSnapshot = JSON.parse(await readFile(`${root}/docs/operations-snapshot-20260828.json`, "utf8"));
 check(demoSchema.required.includes("evidence"), "SCHEMA_EVIDENCE_REQUIRED");
 check(["source_ref", "observed_at", "freshness_seconds"].every((field) => demoSchema.$defs.source.required.includes(field)), "SCHEMA_SOURCE_TIME_FRESHNESS_REQUIRED");
+check(operationsSchema.required.includes("raw_records_included"), "OPERATIONS_SCHEMA_RAW_BOUNDARY_REQUIRED");
+check(operationsSnapshot.raw_records_included === false, "OPERATIONS_RAW_RECORDS_FORBIDDEN");
+check(operationsSnapshot.metrics.votes.integrity_violation_count === 0, "OPERATIONS_VOTE_INTEGRITY");
+check(operationsSnapshot.metrics.model_routes.model_authority_violation_count === 0, "OPERATIONS_MODEL_AUTHORITY");
+check(
+  Object.values(operationsSnapshot.metrics.votes.buy_vote_distribution).reduce((sum, count) => sum + count, 0) ===
+    operationsSnapshot.metrics.votes.round_count,
+  "OPERATIONS_VOTE_TOTAL"
+);
+check(
+  operationsSnapshot.metrics.model_routes.primary_count +
+    operationsSnapshot.metrics.model_routes.fallback_count +
+    operationsSnapshot.metrics.model_routes.local_template_count ===
+    operationsSnapshot.metrics.model_routes.receipt_count,
+  "OPERATIONS_ROUTE_TOTAL"
+);
 
 for (const name of ["paper-tp", "paper-sl", "observe-boomerang"]) {
   const fixture = JSON.parse(await readFile(`${root}/fixtures/${name}.json`, "utf8"));
@@ -42,5 +60,5 @@ if (failures.length > 0) {
   process.stderr.write(`${failures.join("\n")}\n`);
   process.exitCode = 1;
 } else {
-  process.stdout.write("validation passed: fixtures, contracts, fake lab, public view, and security scan\n");
+  process.stdout.write("validation passed: fixtures, contracts, sanitized aggregate, fake lab, public view, and security scan\n");
 }

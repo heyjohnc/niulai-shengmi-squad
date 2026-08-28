@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "snapshot_date": "2026-08-28",
+  "status": "FROZEN_PUBLIC_AGGREGATE",
+  "source_mode": "SANITIZED_AGGREGATE_FROM_PRIVATE_RUNTIME",
+  "source_run_status": "RUNNING_AT_SNAPSHOT",
+  "mixed_runtime_revisions": true,
+  "raw_records_included": false,
+  "metrics": {
+    "runtime": {
+      "recorded_span_seconds": 210454,
+      "poll_interval_seconds": 60,
+      "tick_count": 2155,
+      "bounded_error_count": 7
+    },
+    "discovery": {
+      "qualified_candidate_count": 111,
+      "labelled_wallet_observation_count": 2075,
+      "read_only_chain_verification_count": 160
+    },
+    "votes": {
+      "round_count": 111,
+      "buy_vote_distribution": {
+        "0": 6,
+        "1": 32,
+        "2": 38,
+        "3": 30,
+        "4": 5
+      },
+      "threshold_reached_count": 35,
+      "observe_only_count": 76,
+      "integrity_violation_count": 0
+    },
+    "dialogue": {
+      "line_count": 901,
+      "exact_unique_line_count": 870,
+      "exact_unique_ratio": 0.9656,
+      "over_limit_line_count": 0
+    },
+    "model_routes": {
+      "receipt_count": 901,
+      "primary_count": 508,
+      "fallback_count": 157,
+      "local_template_count": 236,
+      "model_authority_violation_count": 0,
+      "stored_prompt_count": 0,
+      "stored_raw_completion_count": 0
+    }
+  },
+  "quality_metrics": {
+    "revision_scoped_latency_published": false,
+    "revision_scoped_zero_message_rate_published": false,
+    "reason": "WAITING_FOR_A_STABLE_REVISION_SCOPED_SAMPLE"
+  },
+  "exclusions": [
+    "RAW_TIMELINE",
+    "TOKEN_AND_CANDIDATE_IDENTIFIERS",
+    "WALLET_AND_CHAIN_IDENTIFIERS",
+    "TRANSACTION_AND_PROVIDER_RECEIPTS",
+    "USER_AND_SOCIAL_IDENTITIES",
+    "PROMPTS_AND_COMPLETIONS",
+    "PROFIT_AND_STRATEGY_PERFORMANCE",
+    "HOST_AND_CREDENTIAL_CONFIGURATION"
+  ],
+  "cautions": [
+    "RECORDED_SPAN_IS_NOT_UPTIME",
+    "EXACT_UNIQUE_RATIO_IS_NOT_SEMANTIC_DIVERSITY",
+    "ROUTE_COUNTS_ARE_NOT_MODEL_QUALITY_SCORES",
+    "MIXED_REVISIONS_CANNOT_PROVE_CURRENT_RELIABILITY",
+    "AGGREGATE_DOES_NOT_PROVE_PRODUCTION_OR_BUSINESS_OUTCOMES"
+  ]
+}

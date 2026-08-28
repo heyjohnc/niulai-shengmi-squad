@@ -54,16 +54,20 @@ git rev-list --objects --all
 git fsck --no-reflogs --unreachable
 ```
 
-审计目标：新仓只有自己的 root commit 和后续 clean-room commits；不存在其他仓库 object、tag、release 或 remote history。GitHub staging 创建前再次检查 source-of-record 的 private visibility；staging 自身也必须保持 private。
+审计目标：新仓只有自己的 root commit 和后续 clean-room commits；不存在其他仓库 object、tag、release 或 remote history。公开前还需验证 clean worktree、exact remote/HEAD、Actions 成功和安全扫描 0 findings；公开后使用匿名网页、API、Raw 内容和 Actions API 验证可读性。
+
+日期化运行聚合另做算术一致性、字段白名单和敏感形状检查。它不包含原始记录，也不能从本 public reference 独立重算。
 
 ## Claim-state interpretation
 
 | Claim axis | Meaning in this repository |
 | --- | --- |
 | `CODE_PRESENT` | code and documentation exist |
-| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 54 Node test cases plus deterministic fixture and injected fake validation passed |
+| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 59 Node test cases plus deterministic fixture and injected fake validation passed |
+| `PUBLIC_REFERENCE_RELEASED` | Owner-authorized public visibility and anonymous GitHub access were verified |
+| `SANITIZED_RUNTIME_AGGREGATE` | only the checked-in aggregate and disclosure contract were tested |
 | `DEPLOYED_DEMO` | requires separate deployment evidence; currently not validated |
 | `LIVE_READ_ONLY_VALIDATED` | requires an authorized real external read path; currently not validated |
 | `NOT_VALIDATED` | production, money, social publication, users, revenue, reliability and business impact |
 
-测试通过不等于 Owner acceptance，private staging 不等于 public release，页面能打开也不等于 production readiness。
+测试通过不等于 production acceptance，public GitHub release 不等于部署，页面能打开也不等于 production readiness。
