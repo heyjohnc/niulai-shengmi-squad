@@ -1,0 +1,18 @@
+{
+  "name": "niulai-shengmi-squad",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline clean-room public reference for a four-agent, paper-only market-story timeline.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "fixtures:generate": "node scripts/generate-fixtures.mjs",
+    "test": "node --test",
+    "validate": "node scripts/validate.mjs",
+    "demo": "node scripts/demo.mjs",
+    "serve": "node src/server.mjs"
+  },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="牛来生米小队离线 clean-room 公开参考实现">
+    <title>牛来生米小队 / Niulai Shengmi Squad</title>
+    <link rel="icon" href="/mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <img src="/mark.svg" alt="">
+        <span><strong>牛来生米小队</strong><small>Niulai Shengmi Squad</small></span>
+      </a>
+      <div class="mode-strip" aria-label="运行模式">
+        <span>MODEL_DISABLED</span><span>FIXTURE_ONLY</span><span>PAPER_ONLY</span>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">OFFLINE PUBLIC REFERENCE</p>
+          <h1>四个人先投票，<br><em>模型后接话。</em></h1>
+          <p class="lede">从 synthetic 候选卡到纸面 TP/SL，再到没买后的回旋镖：所有事实、推断和开放问题都在同一条只读时间线上。</p>
+        </div>
+        <div class="hero-note">
+          <span>01</span>
+          <p>这是一套确定性、无钱包、无网络依赖的参考实现。它不连接真实市场，也不提供交易能力。</p>
+        </div>
+      </section>
+
+      <section class="control-bar" aria-label="演示选择">
+        <div>
+          <span class="section-label">FIXTURE</span>
+          <h2 id="fixture-title">纸面止盈路径</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="选择 fixture">
+          <button class="active" data-fixture="paper-tp" role="tab" aria-selected="true">3/4 → TP</button>
+          <button data-fixture="paper-sl" role="tab" aria-selected="false">3/4 → SL</button>
+          <button data-fixture="observe-boomerang" role="tab" aria-selected="false">不足三票</button>
+        </div>
+      </section>
+
+      <section class="dashboard" aria-live="polite">
+        <article class="candidate-card">
+          <div class="card-kicker"><span>云雀候选卡</span><span id="freshness">freshness</span></div>
+          <h2 id="candidate-name">载入中</h2>
+          <p id="candidate-id" class="mono"></p>
+          <div id="metrics" class="metrics"></div>
+          <div id="claims" class="claims"></div>
+        </article>
+
+        <aside class="decision-card">
+          <div class="card-kicker"><span>冻结票面</span><span>50% EACH</span></div>
+          <div id="vote-score" class="vote-score">–/4</div>
+          <p id="decision-copy"></p>
+          <div id="votes" class="votes"></div>
+          <div class="authority-grid">
+            <span>模型投票<strong>禁止</strong></span>
+            <span>钱包<strong>不存在</strong></span>
+            <span>前端写入<strong>禁止</strong></span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="timeline-section">
+        <div class="section-heading">
+          <div><span class="section-label">CANONICAL</span><h2>一条时间线</h2></div>
+          <p>候选、四票、纸面仓、价格终局与本地 fallback 依次追加，不回写历史。</p>
+        </div>
+        <ol id="timeline" class="timeline"></ol>
+      </section>
+
+      <section class="lab-section">
+        <div class="section-heading">
+          <div><span class="section-label">EXECUTION SAFETY LAB</span><h2>只跑 injected fake transport</h2></div>
+          <p>把成功、回滚、pending、ambiguous、单次 retry、原子状态和单 writer 规则放在同一张只读表里。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>场景</th><th>最终状态</th><th>调用</th><th>外部副作用</th></tr></thead>
+            <tbody id="lab-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>非官方粉丝二创参考实现。PAPER_ONLY · FIXTURE_ONLY · GET-only。</p>
+      <p>原创 SVG 与自有代码；第三方名称与内容不受代码许可覆盖。</p>
+    </footer>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

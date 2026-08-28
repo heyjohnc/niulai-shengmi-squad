@@ -1,0 +1,661 @@
+{
+  "schema_version": "1.0",
+  "product": {
+    "display_name": "牛来生米小队",
+    "english_name": "Niulai Shengmi Squad"
+  },
+  "mode": "MODEL_DISABLED",
+  "data_mode": "FIXTURE_ONLY",
+  "synthetic": true,
+  "fixture_only": true,
+  "agents": [
+    {
+      "id": "YUNQUE",
+      "name": "云雀",
+      "duty": "候选卡与证据分层",
+      "color": "#f9734f"
+    },
+    {
+      "id": "NIULAI",
+      "name": "牛来",
+      "duty": "纸面开仓与结果回写",
+      "color": "#f4c95d"
+    },
+    {
+      "id": "NIULAI_MAMA",
+      "name": "牛来妈妈",
+      "duty": "时间线整理与角色接话",
+      "color": "#8ed4c6"
+    },
+    {
+      "id": "BAOLA",
+      "name": "豹拉",
+      "duty": "反证、开放问题与回旋镖",
+      "color": "#9aa7ff"
+    }
+  ],
+  "candidate": {
+    "id": "fixture-candidate-boomerang",
+    "contract_id": "synthetic-contract-boomerang",
+    "name": "回声豆",
+    "symbol": "ECHO",
+    "created_at": "2032-04-05T09:00:00.000Z",
+    "observed_at": "2032-04-05T09:00:12.000Z",
+    "freshness_seconds": 4,
+    "metrics": {
+      "views": 132,
+      "kol_count": 2,
+      "volume_5m_units": 8800,
+      "liquidity_units": 23600
+    },
+    "synthetic": true,
+    "fixture_only": true,
+    "source": {
+      "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+      "source_ref": "fixture://synthetic-market/v1",
+      "observed_at": "2032-04-05T09:00:12.000Z",
+      "freshness_seconds": 4,
+      "synthetic": true,
+      "fixture_only": true,
+      "read_only": true
+    }
+  },
+  "evidence": [
+    {
+      "claim_type": "FACT",
+      "text": "ECHO 的 1 分钟与 5 分钟 synthetic 窗口齐全，浏览量与候选数达到 fixture 门槛。",
+      "source_event_id": "event-001",
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:12.000Z",
+        "freshness_seconds": 4,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      },
+      "observed_at": "2032-04-05T09:00:12.000Z",
+      "freshness_seconds": 4
+    },
+    {
+      "claim_type": "INFERENCE",
+      "text": "短时热度可能带来更大的纸面波动，但不代表可交易性或收益。",
+      "source_event_id": "event-001",
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:12.000Z",
+        "freshness_seconds": 4,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      },
+      "observed_at": "2032-04-05T09:00:12.000Z",
+      "freshness_seconds": 4
+    },
+    {
+      "claim_type": "OPEN_QUESTION",
+      "text": "若价格路径反向，四人的票后表达会怎样变成回旋镖？",
+      "source_event_id": "event-001",
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:12.000Z",
+        "freshness_seconds": 4,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      },
+      "observed_at": "2032-04-05T09:00:12.000Z",
+      "freshness_seconds": 4
+    }
+  ],
+  "vote_round": {
+    "vote_finalized": true,
+    "decision_basis": "RANDOM_ONLY",
+    "external_features_used": false,
+    "threshold": 3,
+    "votes": [
+      {
+        "role": "YUNQUE",
+        "probability": 0.5,
+        "draw": 0,
+        "vote": "PASS",
+        "decision_basis": "RANDOM_ONLY"
+      },
+      {
+        "role": "NIULAI",
+        "probability": 0.5,
+        "draw": 0,
+        "vote": "PASS",
+        "decision_basis": "RANDOM_ONLY"
+      },
+      {
+        "role": "NIULAI_MAMA",
+        "probability": 0.5,
+        "draw": 0,
+        "vote": "PASS",
+        "decision_basis": "RANDOM_ONLY"
+      },
+      {
+        "role": "BAOLA",
+        "probability": 0.5,
+        "draw": 0,
+        "vote": "PASS",
+        "decision_basis": "RANDOM_ONLY"
+      }
+    ],
+    "buy_votes": 0,
+    "decision": "OBSERVE_ONLY"
+  },
+  "price_path": [
+    {
+      "offset_seconds": 0,
+      "price_index": 10000
+    },
+    {
+      "offset_seconds": 60,
+      "price_index": 8200
+    },
+    {
+      "offset_seconds": 120,
+      "price_index": 11300
+    },
+    {
+      "offset_seconds": 240,
+      "price_index": 14800
+    }
+  ],
+  "paper_position": null,
+  "outcome": {
+    "type": "OBSERVATION_BOOMERANG",
+    "status": "CLOSED",
+    "observation_seconds": 120,
+    "final_return_bps": 4800,
+    "paper_position_opened": false,
+    "external_side_effect": false
+  },
+  "timeline": [
+    {
+      "event_id": "event-001",
+      "sequence": 1,
+      "occurred_at": "2032-04-05T09:00:12.000Z",
+      "kind": "CANDIDATE_CARD",
+      "role": "YUNQUE",
+      "claim_type": "FACT",
+      "body": "云雀提交 synthetic 候选 回声豆（ECHO）。",
+      "candidate": {
+        "id": "fixture-candidate-boomerang",
+        "contract_id": "synthetic-contract-boomerang",
+        "name": "回声豆",
+        "symbol": "ECHO",
+        "created_at": "2032-04-05T09:00:00.000Z",
+        "observed_at": "2032-04-05T09:00:12.000Z",
+        "freshness_seconds": 4,
+        "metrics": {
+          "views": 132,
+          "kol_count": 2,
+          "volume_5m_units": 8800,
+          "liquidity_units": 23600
+        },
+        "synthetic": true,
+        "fixture_only": true,
+        "source": {
+          "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+          "source_ref": "fixture://synthetic-market/v1",
+          "observed_at": "2032-04-05T09:00:12.000Z",
+          "freshness_seconds": 4,
+          "synthetic": true,
+          "fixture_only": true,
+          "read_only": true
+        }
+      },
+      "evidence": [
+        {
+          "claim_type": "FACT",
+          "text": "ECHO 的 1 分钟与 5 分钟 synthetic 窗口齐全，浏览量与候选数达到 fixture 门槛。",
+          "source_event_id": "event-001",
+          "source": {
+            "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+            "source_ref": "fixture://synthetic-market/v1",
+            "observed_at": "2032-04-05T09:00:12.000Z",
+            "freshness_seconds": 4,
+            "synthetic": true,
+            "fixture_only": true,
+            "read_only": true
+          },
+          "observed_at": "2032-04-05T09:00:12.000Z",
+          "freshness_seconds": 4
+        },
+        {
+          "claim_type": "INFERENCE",
+          "text": "短时热度可能带来更大的纸面波动，但不代表可交易性或收益。",
+          "source_event_id": "event-001",
+          "source": {
+            "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+            "source_ref": "fixture://synthetic-market/v1",
+            "observed_at": "2032-04-05T09:00:12.000Z",
+            "freshness_seconds": 4,
+            "synthetic": true,
+            "fixture_only": true,
+            "read_only": true
+          },
+          "observed_at": "2032-04-05T09:00:12.000Z",
+          "freshness_seconds": 4
+        },
+        {
+          "claim_type": "OPEN_QUESTION",
+          "text": "若价格路径反向，四人的票后表达会怎样变成回旋镖？",
+          "source_event_id": "event-001",
+          "source": {
+            "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+            "source_ref": "fixture://synthetic-market/v1",
+            "observed_at": "2032-04-05T09:00:12.000Z",
+            "freshness_seconds": 4,
+            "synthetic": true,
+            "fixture_only": true,
+            "read_only": true
+          },
+          "observed_at": "2032-04-05T09:00:12.000Z",
+          "freshness_seconds": 4
+        }
+      ],
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:12.000Z",
+        "freshness_seconds": 4,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-002",
+      "sequence": 2,
+      "occurred_at": "2032-04-05T09:00:20.000Z",
+      "kind": "VOTE_FINALIZED",
+      "role": null,
+      "claim_type": "FACT",
+      "body": "四票已冻结：0/4 BUY；决议 OBSERVE_ONLY。",
+      "vote_round": {
+        "vote_finalized": true,
+        "decision_basis": "RANDOM_ONLY",
+        "external_features_used": false,
+        "threshold": 3,
+        "votes": [
+          {
+            "role": "YUNQUE",
+            "probability": 0.5,
+            "draw": 0,
+            "vote": "PASS",
+            "decision_basis": "RANDOM_ONLY"
+          },
+          {
+            "role": "NIULAI",
+            "probability": 0.5,
+            "draw": 0,
+            "vote": "PASS",
+            "decision_basis": "RANDOM_ONLY"
+          },
+          {
+            "role": "NIULAI_MAMA",
+            "probability": 0.5,
+            "draw": 0,
+            "vote": "PASS",
+            "decision_basis": "RANDOM_ONLY"
+          },
+          {
+            "role": "BAOLA",
+            "probability": 0.5,
+            "draw": 0,
+            "vote": "PASS",
+            "decision_basis": "RANDOM_ONLY"
+          }
+        ],
+        "buy_votes": 0,
+        "decision": "OBSERVE_ONLY"
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:20.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-003",
+      "sequence": 3,
+      "occurred_at": "2032-04-05T09:00:24.000Z",
+      "kind": "ROLE_LINE",
+      "role": "YUNQUE",
+      "claim_type": "INFERENCE",
+      "body": "云雀：票已经封箱，我只负责把候选和来源摆清楚。",
+      "model": {
+        "role": "YUNQUE",
+        "claim_type": "INFERENCE",
+        "text": "云雀：票已经封箱，我只负责把候选和来源摆清楚。",
+        "source_event_ids": [
+          "event-001"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:24.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-004",
+      "sequence": 4,
+      "occurred_at": "2032-04-05T09:00:25.000Z",
+      "kind": "ROLE_LINE",
+      "role": "NIULAI",
+      "claim_type": "INFERENCE",
+      "body": "牛来：纸面结果照记，涨跌都别替我改口。",
+      "model": {
+        "role": "NIULAI",
+        "claim_type": "INFERENCE",
+        "text": "牛来：纸面结果照记，涨跌都别替我改口。",
+        "source_event_ids": [
+          "event-001"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:25.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-005",
+      "sequence": 5,
+      "occurred_at": "2032-04-05T09:00:26.000Z",
+      "kind": "ROLE_LINE",
+      "role": "NIULAI_MAMA",
+      "claim_type": "INFERENCE",
+      "body": "牛来妈妈：先看时间线，再看谁的话会变成回旋镖。",
+      "model": {
+        "role": "NIULAI_MAMA",
+        "claim_type": "INFERENCE",
+        "text": "牛来妈妈：先看时间线，再看谁的话会变成回旋镖。",
+        "source_event_ids": [
+          "event-001"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:26.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-006",
+      "sequence": 6,
+      "occurred_at": "2032-04-05T09:00:27.000Z",
+      "kind": "ROLE_LINE",
+      "role": "BAOLA",
+      "claim_type": "INFERENCE",
+      "body": "豹拉：问题先留着，结果出来再对账。",
+      "model": {
+        "role": "BAOLA",
+        "claim_type": "INFERENCE",
+        "text": "豹拉：问题先留着，结果出来再对账。",
+        "source_event_ids": [
+          "event-001"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:00:27.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-007",
+      "sequence": 7,
+      "occurred_at": "2032-04-05T09:02:20.000Z",
+      "kind": "OBSERVATION_SETTLED",
+      "role": "BAOLA",
+      "claim_type": "FACT",
+      "body": "不足三票，没有纸面开仓；120 秒观察后继续只读回看。",
+      "outcome": {
+        "type": "OBSERVATION_BOOMERANG",
+        "status": "CLOSED",
+        "observation_seconds": 120,
+        "final_return_bps": 4800,
+        "paper_position_opened": false,
+        "external_side_effect": false
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:02:20.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-008",
+      "sequence": 8,
+      "occurred_at": "2032-04-05T09:04:20.000Z",
+      "kind": "BOOMERANG_CALLBACK",
+      "role": "BAOLA",
+      "claim_type": "INFERENCE",
+      "body": "先跌后拉，没买也能留下一个可核对的回旋镖。",
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:04:20.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-009",
+      "sequence": 9,
+      "occurred_at": "2032-04-05T09:04:40.000Z",
+      "kind": "FALLBACK_ROLE_LINE",
+      "role": "YUNQUE",
+      "claim_type": "INFERENCE",
+      "body": "云雀：票已经封箱，我只负责把候选和来源摆清楚。",
+      "model": {
+        "role": "YUNQUE",
+        "claim_type": "INFERENCE",
+        "text": "云雀：票已经封箱，我只负责把候选和来源摆清楚。",
+        "source_event_ids": [
+          "event-008"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:04:40.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-010",
+      "sequence": 10,
+      "occurred_at": "2032-04-05T09:04:41.000Z",
+      "kind": "FALLBACK_ROLE_LINE",
+      "role": "NIULAI",
+      "claim_type": "INFERENCE",
+      "body": "牛来：纸面结果照记，涨跌都别替我改口。",
+      "model": {
+        "role": "NIULAI",
+        "claim_type": "INFERENCE",
+        "text": "牛来：纸面结果照记，涨跌都别替我改口。",
+        "source_event_ids": [
+          "event-008"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:04:41.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-011",
+      "sequence": 11,
+      "occurred_at": "2032-04-05T09:04:42.000Z",
+      "kind": "FALLBACK_ROLE_LINE",
+      "role": "NIULAI_MAMA",
+      "claim_type": "INFERENCE",
+      "body": "牛来妈妈：先看时间线，再看谁的话会变成回旋镖。",
+      "model": {
+        "role": "NIULAI_MAMA",
+        "claim_type": "INFERENCE",
+        "text": "牛来妈妈：先看时间线，再看谁的话会变成回旋镖。",
+        "source_event_ids": [
+          "event-008"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:04:42.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    },
+    {
+      "event_id": "event-012",
+      "sequence": 12,
+      "occurred_at": "2032-04-05T09:04:43.000Z",
+      "kind": "FALLBACK_ROLE_LINE",
+      "role": "BAOLA",
+      "claim_type": "INFERENCE",
+      "body": "豹拉：问题先留着，结果出来再对账。",
+      "model": {
+        "role": "BAOLA",
+        "claim_type": "INFERENCE",
+        "text": "豹拉：问题先留着，结果出来再对账。",
+        "source_event_ids": [
+          "event-008"
+        ],
+        "mode": "LOCAL_TEMPLATE",
+        "failure_code": "MODEL_DISABLED",
+        "model_invoked": false,
+        "safety": {
+          "may_decide_vote": false,
+          "may_override_threshold": false,
+          "may_execute": false,
+          "may_publish": false
+        }
+      },
+      "source": {
+        "provider": "SYNTHETIC_FIXTURE_GENERATOR",
+        "source_ref": "fixture://synthetic-market/v1",
+        "observed_at": "2032-04-05T09:04:43.000Z",
+        "freshness_seconds": 0,
+        "synthetic": true,
+        "fixture_only": true,
+        "read_only": true
+      }
+    }
+  ],
+  "authority": {
+    "model_may_vote": false,
+    "model_may_execute": false,
+    "frontend_may_mutate": false,
+    "wallet_present": false,
+    "network_required": false
+  }
+}

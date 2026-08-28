@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">牛来生米小队原创标记</title>
+  <desc id="desc">四条彩色轨迹围绕一粒抽象种子，代表四个角色共享一条时间线。</desc>
+  <rect width="64" height="64" rx="18" fill="#101820"/>
+  <path d="M16 25c7-8 13-10 18-6" fill="none" stroke="#f9734f" stroke-width="5" stroke-linecap="round"/>
+  <path d="M48 25c-7-8-13-10-18-6" fill="none" stroke="#f4c95d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M16 39c7 8 13 10 18 6" fill="none" stroke="#8ed4c6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M48 39c-7 8-13 10-18 6" fill="none" stroke="#9aa7ff" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="32" cy="32" rx="8" ry="12" fill="#fff7e8"/>
+  <path d="M32 24c4 4 4 12 0 16" fill="none" stroke="#101820" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

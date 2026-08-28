@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provider-neutral role request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "context_id", "role", "task", "candidate", "evidence", "finalized_vote", "safety"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "context_id": { "type": "string" },
+    "role": { "enum": ["YUNQUE", "NIULAI", "NIULAI_MAMA", "BAOLA"] },
+    "task": { "enum": ["POST_VOTE_LINE", "TERMINAL_REACTION", "OBSERVATION_REACTION"] },
+    "candidate": { "type": "object" },
+    "evidence": { "type": "array", "minItems": 1 },
+    "finalized_vote": { "type": "object" },
+    "safety": { "type": "object" }
+  }
+}

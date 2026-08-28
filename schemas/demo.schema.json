@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/niulai-shengmi-squad/demo.schema.json",
+  "title": "Niulai Shengmi Squad deterministic demo",
+  "type": "object",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "source_ref", "observed_at", "freshness_seconds", "synthetic", "fixture_only", "read_only"],
+      "properties": {
+        "provider": { "const": "SYNTHETIC_FIXTURE_GENERATOR" },
+        "source_ref": { "type": "string", "pattern": "^fixture://" },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "freshness_seconds": { "type": "integer", "minimum": 0 },
+        "synthetic": { "const": true },
+        "fixture_only": { "const": true },
+        "read_only": { "const": true }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_type", "text", "source_event_id", "source", "observed_at", "freshness_seconds"],
+      "properties": {
+        "claim_type": { "enum": ["FACT", "INFERENCE", "OPEN_QUESTION"] },
+        "text": { "type": "string", "minLength": 1 },
+        "source_event_id": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/source" },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "freshness_seconds": { "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  "required": ["schema_version", "mode", "data_mode", "synthetic", "fixture_only", "agents", "candidate", "evidence", "vote_round", "timeline", "authority"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "mode": { "const": "MODEL_DISABLED" },
+    "data_mode": { "const": "FIXTURE_ONLY" },
+    "synthetic": { "const": true },
+    "fixture_only": { "const": true },
+    "agents": { "type": "array", "minItems": 4, "maxItems": 4 },
+    "candidate": {
+      "type": "object",
+      "required": ["id", "observed_at", "freshness_seconds", "synthetic", "fixture_only", "source"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "freshness_seconds": { "type": "integer", "minimum": 0 },
+        "synthetic": { "const": true },
+        "fixture_only": { "const": true },
+        "source": { "$ref": "#/$defs/source" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/evidence" },
+      "allOf": [
+        { "contains": { "properties": { "claim_type": { "const": "FACT" } }, "required": ["claim_type"] }, "minContains": 1 },
+        { "contains": { "properties": { "claim_type": { "const": "INFERENCE" } }, "required": ["claim_type"] }, "minContains": 1 },
+        { "contains": { "properties": { "claim_type": { "const": "OPEN_QUESTION" } }, "required": ["claim_type"] }, "minContains": 1 }
+      ]
+    },
+    "vote_round": {
+      "type": "object",
+      "required": ["vote_finalized", "decision_basis", "votes", "buy_votes", "decision"],
+      "properties": {
+        "vote_finalized": { "const": true },
+        "decision_basis": { "const": "RANDOM_ONLY" },
+        "votes": { "type": "array", "minItems": 4, "maxItems": 4 }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["event_id", "sequence", "occurred_at", "kind", "claim_type", "body", "source"],
+        "properties": {
+          "event_id": { "type": "string", "minLength": 1 },
+          "sequence": { "type": "integer", "minimum": 1 },
+          "occurred_at": { "type": "string", "format": "date-time" },
+          "claim_type": { "enum": ["FACT", "INFERENCE", "OPEN_QUESTION"] },
+          "source": { "$ref": "#/$defs/source" }
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["model_may_vote", "model_may_execute", "frontend_may_mutate", "wallet_present", "network_required"],
+      "properties": {
+        "model_may_vote": { "const": false },
+        "model_may_execute": { "const": false },
+        "frontend_may_mutate": { "const": false },
+        "wallet_present": { "const": false },
+        "network_required": { "const": false }
+      }
+    }
+  }
+}

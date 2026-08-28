@@ -1,0 +1,672 @@
+{
+  "schema_version": "1.0",
+  "scenarios": [
+    {
+      "id": "confirmed-success",
+      "lab_mode": "INJECTED_FAKE_ONLY",
+      "transport": "INJECTED_FAKE_TRANSPORT",
+      "frozen_terms": {
+        "schema_version": "lab-terms-v1",
+        "mode": "FAKE_ONLY",
+        "snapshot_version": "snapshot-v1",
+        "notional_units": 100,
+        "max_attempts": 2,
+        "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+        "mutation_permitted": false
+      },
+      "transport_calls": [
+        {
+          "attempt": 1,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "CONFIRMED_SUCCESS"
+        }
+      ],
+      "journal": [
+        {
+          "revision": 1,
+          "phase": "ATTEMPT_1_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 2,
+          "phase": "ATTEMPT_1_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_SUCCESS",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 3,
+          "phase": "CLOSED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": "CONFIRMED_SUCCESS",
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_SUCCESS",
+          "writer_lock": "HELD"
+        }
+      ],
+      "final_state": {
+        "revision": 3,
+        "phase": "CLOSED",
+        "exposure_units": 0,
+        "frozen_terms": {
+          "schema_version": "lab-terms-v1",
+          "mode": "FAKE_ONLY",
+          "snapshot_version": "snapshot-v1",
+          "notional_units": 100,
+          "max_attempts": 2,
+          "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+          "mutation_permitted": false
+        },
+        "terminal_status": "CONFIRMED_SUCCESS",
+        "operator_action_required": false,
+        "last_outcome": "CONFIRMED_SUCCESS",
+        "writer_lock": "ABSENT"
+      },
+      "safety": {
+        "signer_present": false,
+        "wallet_client_present": false,
+        "network_allowed": false,
+        "external_side_effect": false,
+        "single_writer_enforced": true,
+        "atomic_revision_enforced": true
+      }
+    },
+    {
+      "id": "confirmed-revert-then-success",
+      "lab_mode": "INJECTED_FAKE_ONLY",
+      "transport": "INJECTED_FAKE_TRANSPORT",
+      "frozen_terms": {
+        "schema_version": "lab-terms-v1",
+        "mode": "FAKE_ONLY",
+        "snapshot_version": "snapshot-v1",
+        "notional_units": 100,
+        "max_attempts": 2,
+        "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+        "mutation_permitted": false
+      },
+      "transport_calls": [
+        {
+          "attempt": 1,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "CONFIRMED_REVERT"
+        },
+        {
+          "attempt": 2,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "CONFIRMED_SUCCESS"
+        }
+      ],
+      "journal": [
+        {
+          "revision": 1,
+          "phase": "ATTEMPT_1_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 2,
+          "phase": "ATTEMPT_1_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_REVERT",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 3,
+          "phase": "ATTEMPT_2_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_REVERT",
+          "retry_reason": "CONFIRMED_REVERT",
+          "retry_snapshot_version": "snapshot-v1",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 4,
+          "phase": "ATTEMPT_2_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_SUCCESS",
+          "retry_reason": "CONFIRMED_REVERT",
+          "retry_snapshot_version": "snapshot-v1",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 5,
+          "phase": "CLOSED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": "CONFIRMED_SUCCESS_AFTER_REVERT",
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_SUCCESS",
+          "retry_reason": "CONFIRMED_REVERT",
+          "retry_snapshot_version": "snapshot-v1",
+          "writer_lock": "HELD"
+        }
+      ],
+      "final_state": {
+        "revision": 5,
+        "phase": "CLOSED",
+        "exposure_units": 0,
+        "frozen_terms": {
+          "schema_version": "lab-terms-v1",
+          "mode": "FAKE_ONLY",
+          "snapshot_version": "snapshot-v1",
+          "notional_units": 100,
+          "max_attempts": 2,
+          "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+          "mutation_permitted": false
+        },
+        "terminal_status": "CONFIRMED_SUCCESS_AFTER_REVERT",
+        "operator_action_required": false,
+        "last_outcome": "CONFIRMED_SUCCESS",
+        "retry_reason": "CONFIRMED_REVERT",
+        "retry_snapshot_version": "snapshot-v1",
+        "writer_lock": "ABSENT"
+      },
+      "safety": {
+        "signer_present": false,
+        "wallet_client_present": false,
+        "network_allowed": false,
+        "external_side_effect": false,
+        "single_writer_enforced": true,
+        "atomic_revision_enforced": true
+      }
+    },
+    {
+      "id": "confirmed-revert-twice",
+      "lab_mode": "INJECTED_FAKE_ONLY",
+      "transport": "INJECTED_FAKE_TRANSPORT",
+      "frozen_terms": {
+        "schema_version": "lab-terms-v1",
+        "mode": "FAKE_ONLY",
+        "snapshot_version": "snapshot-v1",
+        "notional_units": 100,
+        "max_attempts": 2,
+        "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+        "mutation_permitted": false
+      },
+      "transport_calls": [
+        {
+          "attempt": 1,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "CONFIRMED_REVERT"
+        },
+        {
+          "attempt": 2,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "CONFIRMED_REVERT"
+        }
+      ],
+      "journal": [
+        {
+          "revision": 1,
+          "phase": "ATTEMPT_1_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 2,
+          "phase": "ATTEMPT_1_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_REVERT",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 3,
+          "phase": "ATTEMPT_2_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_REVERT",
+          "retry_reason": "CONFIRMED_REVERT",
+          "retry_snapshot_version": "snapshot-v1",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 4,
+          "phase": "ATTEMPT_2_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "CONFIRMED_REVERT",
+          "retry_reason": "CONFIRMED_REVERT",
+          "retry_snapshot_version": "snapshot-v1",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 5,
+          "phase": "BLOCKED_MANUAL_REVIEW",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": "CONFIRMED_REVERT",
+          "operator_action_required": true,
+          "last_outcome": "CONFIRMED_REVERT",
+          "retry_reason": "CONFIRMED_REVERT",
+          "retry_snapshot_version": "snapshot-v1",
+          "writer_lock": "HELD"
+        }
+      ],
+      "final_state": {
+        "revision": 5,
+        "phase": "BLOCKED_MANUAL_REVIEW",
+        "exposure_units": 0,
+        "frozen_terms": {
+          "schema_version": "lab-terms-v1",
+          "mode": "FAKE_ONLY",
+          "snapshot_version": "snapshot-v1",
+          "notional_units": 100,
+          "max_attempts": 2,
+          "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+          "mutation_permitted": false
+        },
+        "terminal_status": "CONFIRMED_REVERT",
+        "operator_action_required": true,
+        "last_outcome": "CONFIRMED_REVERT",
+        "retry_reason": "CONFIRMED_REVERT",
+        "retry_snapshot_version": "snapshot-v1",
+        "writer_lock": "ABSENT"
+      },
+      "safety": {
+        "signer_present": false,
+        "wallet_client_present": false,
+        "network_allowed": false,
+        "external_side_effect": false,
+        "single_writer_enforced": true,
+        "atomic_revision_enforced": true
+      }
+    },
+    {
+      "id": "pending",
+      "lab_mode": "INJECTED_FAKE_ONLY",
+      "transport": "INJECTED_FAKE_TRANSPORT",
+      "frozen_terms": {
+        "schema_version": "lab-terms-v1",
+        "mode": "FAKE_ONLY",
+        "snapshot_version": "snapshot-v1",
+        "notional_units": 100,
+        "max_attempts": 2,
+        "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+        "mutation_permitted": false
+      },
+      "transport_calls": [
+        {
+          "attempt": 1,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "PENDING"
+        }
+      ],
+      "journal": [
+        {
+          "revision": 1,
+          "phase": "ATTEMPT_1_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 2,
+          "phase": "ATTEMPT_1_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "PENDING",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 3,
+          "phase": "BLOCKED_MANUAL_REVIEW",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": "PENDING",
+          "operator_action_required": true,
+          "last_outcome": "PENDING",
+          "writer_lock": "HELD"
+        }
+      ],
+      "final_state": {
+        "revision": 3,
+        "phase": "BLOCKED_MANUAL_REVIEW",
+        "exposure_units": 0,
+        "frozen_terms": {
+          "schema_version": "lab-terms-v1",
+          "mode": "FAKE_ONLY",
+          "snapshot_version": "snapshot-v1",
+          "notional_units": 100,
+          "max_attempts": 2,
+          "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+          "mutation_permitted": false
+        },
+        "terminal_status": "PENDING",
+        "operator_action_required": true,
+        "last_outcome": "PENDING",
+        "writer_lock": "ABSENT"
+      },
+      "safety": {
+        "signer_present": false,
+        "wallet_client_present": false,
+        "network_allowed": false,
+        "external_side_effect": false,
+        "single_writer_enforced": true,
+        "atomic_revision_enforced": true
+      }
+    },
+    {
+      "id": "ambiguous",
+      "lab_mode": "INJECTED_FAKE_ONLY",
+      "transport": "INJECTED_FAKE_TRANSPORT",
+      "frozen_terms": {
+        "schema_version": "lab-terms-v1",
+        "mode": "FAKE_ONLY",
+        "snapshot_version": "snapshot-v1",
+        "notional_units": 100,
+        "max_attempts": 2,
+        "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+        "mutation_permitted": false
+      },
+      "transport_calls": [
+        {
+          "attempt": 1,
+          "snapshot_version": "snapshot-v1",
+          "outcome": "AMBIGUOUS"
+        }
+      ],
+      "journal": [
+        {
+          "revision": 1,
+          "phase": "ATTEMPT_1_RESERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 2,
+          "phase": "ATTEMPT_1_OBSERVED",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": null,
+          "operator_action_required": false,
+          "last_outcome": "AMBIGUOUS",
+          "writer_lock": "HELD"
+        },
+        {
+          "revision": 3,
+          "phase": "BLOCKED_MANUAL_REVIEW",
+          "exposure_units": 0,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "terminal_status": "AMBIGUOUS",
+          "operator_action_required": true,
+          "last_outcome": "AMBIGUOUS",
+          "writer_lock": "HELD"
+        }
+      ],
+      "final_state": {
+        "revision": 3,
+        "phase": "BLOCKED_MANUAL_REVIEW",
+        "exposure_units": 0,
+        "frozen_terms": {
+          "schema_version": "lab-terms-v1",
+          "mode": "FAKE_ONLY",
+          "snapshot_version": "snapshot-v1",
+          "notional_units": 100,
+          "max_attempts": 2,
+          "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+          "mutation_permitted": false
+        },
+        "terminal_status": "AMBIGUOUS",
+        "operator_action_required": true,
+        "last_outcome": "AMBIGUOUS",
+        "writer_lock": "ABSENT"
+      },
+      "safety": {
+        "signer_present": false,
+        "wallet_client_present": false,
+        "network_allowed": false,
+        "external_side_effect": false,
+        "single_writer_enforced": true,
+        "atomic_revision_enforced": true
+      }
+    },
+    {
+      "id": "nonzero-exposure",
+      "lab_mode": "INJECTED_FAKE_ONLY",
+      "transport": "INJECTED_FAKE_TRANSPORT",
+      "frozen_terms": {
+        "schema_version": "lab-terms-v1",
+        "mode": "FAKE_ONLY",
+        "snapshot_version": "snapshot-v1",
+        "notional_units": 100,
+        "max_attempts": 2,
+        "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+        "mutation_permitted": false
+      },
+      "transport_calls": [],
+      "journal": [
+        {
+          "revision": 1,
+          "phase": "BLOCKED_NONZERO_EXPOSURE",
+          "exposure_units": 1,
+          "terminal_status": "FAIL_CLOSED",
+          "operator_action_required": true,
+          "frozen_terms": {
+            "schema_version": "lab-terms-v1",
+            "mode": "FAKE_ONLY",
+            "snapshot_version": "snapshot-v1",
+            "notional_units": 100,
+            "max_attempts": 2,
+            "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+            "mutation_permitted": false
+          },
+          "writer_lock": "HELD"
+        }
+      ],
+      "final_state": {
+        "revision": 1,
+        "phase": "BLOCKED_NONZERO_EXPOSURE",
+        "exposure_units": 1,
+        "terminal_status": "FAIL_CLOSED",
+        "operator_action_required": true,
+        "frozen_terms": {
+          "schema_version": "lab-terms-v1",
+          "mode": "FAKE_ONLY",
+          "snapshot_version": "snapshot-v1",
+          "notional_units": 100,
+          "max_attempts": 2,
+          "retry_policy": "CONFIRMED_REVERT_ONCE_SAME_SNAPSHOT",
+          "mutation_permitted": false
+        },
+        "writer_lock": "ABSENT"
+      },
+      "safety": {
+        "signer_present": false,
+        "wallet_client_present": false,
+        "network_allowed": false,
+        "external_side_effect": false,
+        "single_writer_enforced": true,
+        "atomic_revision_enforced": true
+      }
+    }
+  ]
+}
