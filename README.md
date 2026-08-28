@@ -114,3 +114,9 @@ injected fake transport
 Owner 定义了产品名称、四角色、随机投票、纸面模式、公开/私有分离、安全实验室与发布门。本仓实现、测试、文档和审计由开发 Agent 在这些边界内辅助完成。Owner 已明确批准本 public reference 的 GitHub 可见性；这项批准不等于对生产、真实资金、用户采用或商业结果作出验收声明。
 
 详见 [Case Study](docs/CASE_STUDY.md)、[限制](docs/LIMITATIONS.md)、[贡献指南](CONTRIBUTING.md) 与 [安全政策](SECURITY.md)。
+
+## 喜欢这套架构？
+
+如果它给了你一点启发，欢迎点一个 **Star**；想改成自己的版本，可以直接 **Fork**；做出了有意思的变体，也欢迎开 **Issue** 分享。
+
+Star 是对项目的支持，不是使用条件。代码授权仍以 [Apache License 2.0](LICENSE) 为准，第三方角色、商标和内容不在该许可范围内。
