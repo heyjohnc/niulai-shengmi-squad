@@ -55,10 +55,11 @@ confirmed revert 可以触发一次同 snapshot retry；pending 和 ambiguous �
 
 ## 5. Failure and recovery evidence
 
-实现期间出现过两个有代表性的本地失败：
+实现期间出现过三个有代表性的本地失败：
 
 - 初版 fixture seed 没有达到预期 3/4。处理方式是用只读搜索找到满足目标分支的 seed，并把 generator 自检保留为硬断言；fixture 不会因为错误 seed 静默变成另一条故事。
 - 初版脚本把 `fileURLToPath` 从错误的内置模块导入，生成命令立即失败。修正 import 后重新生成 fixture 与 demo。这个失败发生在任何提交或发布前，没有外部副作用。
+- 首次浏览器验收发现静态文件 `Buffer` 被通用 JSON responder 序列化，状态码与 CSP 测试因此曾误判页面可用。修正为直接发送 binary/string body，并新增 HTML 正文与 content-type 回归测试后，桌面和移动浏览器复验通过。
 
 这些失败说明本仓的验证重点不只是 happy path：生成器必须证明 fixture shape，状态机必须对 ambiguous/pending 不重试，API 必须拒绝 write method，public projection 必须证明私有字段被移除。
 
