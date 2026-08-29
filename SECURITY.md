@@ -10,6 +10,7 @@ This repository is an offline reference implementation. Security support covers 
 - No external network dependency in install, test, validate or demo.
 - No login, publishing, messaging, launch or account automation.
 - No production prompt, account configuration, private infrastructure path or real runtime data.
+- The fan-reward document contains design and claim-state disclosure only; it adds no treasury input, signer, execution method or mutation endpoint.
 - Non-GET requests are rejected.
 - Static files are served from an explicit allowlist.
 - CI does not receive secrets and does not deploy.

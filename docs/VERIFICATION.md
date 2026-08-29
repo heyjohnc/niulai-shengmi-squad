@@ -26,6 +26,14 @@ npm run demo
 - fake lab 覆盖 success、revert、pending、ambiguous、one retry、nonzero exposure、single writer 和 atomic revision。
 - security scan 检查 tracked/candidate path allowlist 与敏感类别。
 - asset allowlist 仅接受仓内原创 `public/mark.svg`，并拒绝 public 文件中的远程或 data-URI 媒体。
+- documentation-only fan-reward disclosure 继续经过相同 security scan，不得包含 private path、真实 chain address、长 transaction-style identifier、credential material 或 live mutation primitive。
+
+## What is not verified for fan rewards
+
+- 本仓没有 fan-reward implementation test；公开可验证对象只有设计和披露边界。
+- broader project 的 action-locked preparation implementation 不能从本仓独立重建。
+- 没有真实 treasury/token/recipient、public-chain preflight artifact、signer、signature、broadcast、receipt、payout 或 standing campaign 证据。
+- `READY_ACTION_LOCKED` 不属于 execution、deployment、live validation 或 production acceptance。
 
 ## Browser verification
 
@@ -63,9 +71,10 @@ git fsck --no-reflogs --unreachable
 | Claim axis | Meaning in this repository |
 | --- | --- |
 | `CODE_PRESENT` | code and documentation exist |
-| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 59 Node test cases plus deterministic fixture and injected fake validation passed |
+| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 61 Node test cases plus deterministic fixture and injected fake validation passed |
 | `PUBLIC_REFERENCE_RELEASED` | Owner-authorized public visibility and anonymous GitHub access were verified |
 | `SANITIZED_RUNTIME_AGGREGATE` | only the checked-in aggregate and disclosure contract were tested |
+| `FAN_REWARD_GOVERNANCE_DESIGN` | documentation-only; no public implementation or real payout evidence |
 | `DEPLOYED_DEMO` | requires separate deployment evidence; currently not validated |
 | `LIVE_READ_ONLY_VALIDATED` | requires an authorized real external read path; currently not validated |
 | `NOT_VALIDATED` | production, money, social publication, users, revenue, reliability and business impact |

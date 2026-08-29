@@ -97,6 +97,12 @@ lab 不是交易实现。它要求 caller 注入 `InjectedFakeTransport`，且 t
 
 该目录没有 signer、wallet library、RPC adapter 或 live runner。CI 的 security scan 对具体危险 primitive、绝对私有路径、地址形状、长 hash、账号/邀请和源仓身份做 denylist 扫描。
 
+## Documentation-only fan reward lane
+
+The broader product direction includes a separate fan-contribution reward lane. It does not reuse market `RANDOM_ONLY` votes: public contribution facts, recipients and bounded amounts are frozen into deterministic commitments, then the same four named Agents cast structured `CONTRIBUTION_EVIDENCE_ONLY` votes. Three approvals may produce only an action-locked exact transfer plan.
+
+This public repository does not implement that lane. It documents the reported preparation contracts, the separation of decision authority and the missing execution/recovery gates in [`FAN_REWARD_GOVERNANCE.md`](FAN_REWARD_GOVERNANCE.md). No fan-reward event enters the current demo, API, UI, fixture generator or fake execution lab.
+
 ## UI and assets
 
 UI 使用原生 HTML/CSS/JavaScript，避免新增 runtime dependency。项目 mark 是本仓手写 SVG：四条轨迹围绕一粒抽象种子。它不模仿第三方 Logo 或电影画面。页面只调用同源 GET API；没有表单、钱包按钮、登录、交易或发布控件。

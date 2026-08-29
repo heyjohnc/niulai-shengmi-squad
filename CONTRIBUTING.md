@@ -16,6 +16,7 @@ Keep the default path offline and deterministic. Do not require credentials, net
 - Keep exactly four voting Agents: 云雀、牛来、牛来妈妈、豹拉.
 - Freeze all four `RANDOM_ONLY` votes before model work.
 - Keep execution `PAPER_ONLY`; the safety lab remains `INJECTED_FAKE_ONLY`.
+- Keep the fan-reward lane documentation-only. Market `RANDOM_ONLY` votes and model dialogue must never become treasury authority.
 - Keep the API GET-only and the UI free of mutation controls.
 - Generate fixtures from this repository's deterministic code; never import private or live payloads.
 - Preserve source, observed time, freshness and claim type for substantive evidence.

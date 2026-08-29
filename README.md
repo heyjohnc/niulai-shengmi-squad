@@ -64,6 +64,12 @@ injected fake transport
 
 详见 [架构说明](docs/ARCHITECTURE.md) 和 [验证说明](docs/VERIFICATION.md)。
 
+## 粉丝贡献奖励治理设计
+
+本仓新增一份 documentation-only 的[粉丝奖励治理设计](docs/FAN_REWARD_GOVERNANCE.md)，公开说明未来社区金库如何把贡献 `FACT`、recipient、金额上限、独立四人结构化决议、deterministic digest、Merkle commitment、exact transfer intent 和公开链 preflight 组织成 action-locked plan。
+
+这条治理 lane 与市场 `RANDOM_ONLY` 完全分离。当前设计中的投票者仍是四个既有 Agent，粉丝是贡献者和潜在 recipient；它不是粉丝成员投票产品。更重要的是，这个 public repo 只包含设计披露，不包含 non-public fan-reward 实现、真实地址、signer、执行器或真实付款证据。`READY_ACTION_LOCKED` 表示“内容可复核”，不表示“可以签名或广播”。
+
 ## What is included
 
 - 正式公开名称只使用“牛来生米小队 / Niulai Shengmi Squad”。
@@ -76,6 +82,7 @@ injected fake transport
 - TP、SL、不足三票观察与回旋镖的确定性 fixture。
 - fake-only execution safety scenarios：confirmed success、confirmed revert、pending、ambiguous、单次 retry、atomic revision、single-writer lock、version-frozen terms、nonzero exposure fail-closed。
 - 一份与原始数据隔离的[脱敏运行聚合快照](docs/OPERATIONS_SNAPSHOT.md)，以及对应 Schema、算术一致性和敏感形状测试。
+- 一份 documentation-only 的粉丝贡献奖励治理设计，明确 broader preparation layer 的公开声明、当前动作锁和接入真实付款前仍需完成的门禁。
 - 无第三方运行依赖的测试、验证、demo、CI 与浏览器 UI。
 
 ## What is not included
@@ -83,6 +90,7 @@ injected fake transport
 - 真实市场原始数据、原始运行记录、provider 回包或从私人 fixture 裁剪的数据；唯一例外是明确标注、字段白名单化且不可反推原始记录的日期化聚合快照。
 - 钱包、signer、credential、交易客户端、真实提交、链上余额或订单/回执标识。
 - 任何交易 provider、launch runner、社交通道、群接收器、登录或发布能力。
+- 粉丝奖励的公开实现代码、真实金库/Token/recipient、signer、付款执行器、回执恢复或 standing campaign。
 - 生产 prompt、账号配置、梗库、真实地址、时间线、截图或私有基础设施路径。
 - 电影画面、衍生头像、下载头像、第三方动态 Logo、台词、歌词或社区访问图片。
 - 部署配置、线上服务、真实只读外部验证、真实用户采用、收益或商业结果。
@@ -95,6 +103,7 @@ injected fake transport
 | `TESTED(FIXTURE/FAKE_TRANSPORT)` | 自动测试和 validate 仅证明 fixture/fake 行为 |
 | `PUBLIC_REFERENCE_RELEASED` | GitHub public visibility 已由 Owner 明确授权，匿名网页/API/Raw/Actions 访问已验证 |
 | `SANITIZED_RUNTIME_AGGREGATE` | 只证明公开快照中的汇总数字与披露边界；原始数据未公开，不能独立重算 |
+| `FAN_REWARD_GOVERNANCE_DESIGN` | `DOCUMENTED_ONLY`；broader action-locked preparation layer 的实现状态仅作清晰标注，不能从本仓独立复现 |
 | `DEPLOYED_DEMO` | `NOT_VALIDATED` |
 | `LIVE_READ_ONLY_VALIDATED` | `NOT_VALIDATED` |
 | `NOT_VALIDATED` | 生产、真实市场、真实资金、真实社交、真实用户、收益、商业影响 |
@@ -105,7 +114,7 @@ injected fake transport
 
 页面没有钱包、交易、发布、登录或其他 mutation 控件。服务只绑定 `127.0.0.1`，非 GET 请求返回 `405`。CI 不读取 secrets，不部署，不连接外部服务。
 
-本项目是非官方粉丝二创参考实现，不声称与任何电影、角色权利人、商标权利人、平台、市场数据提供方、模型提供方或链生态存在官方关系、合作、赞助或背书。详见 [第三方内容边界](THIRD_PARTY_CONTENT.md)。
+本项目是非官方粉丝二创参考实现，不声称与任何电影、角色权利人、商标权利人、平台、市场数据提供方、模型提供方或链生态存在官方关系、合作、赞助或背书。粉丝奖励文档同样不是募资、收益、领取或付款承诺。详见 [第三方内容边界](THIRD_PARTY_CONTENT.md)。
 
 代码按 [Apache License 2.0](LICENSE) 提供；许可只覆盖本仓库作者有权许可的代码和原创 SVG，不覆盖第三方角色、电影、商标、UGC 或其他资产。
 

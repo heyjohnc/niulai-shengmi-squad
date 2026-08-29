@@ -10,6 +10,7 @@
 - provider-neutral contract 没有连接任何 provider，也没有验证真实 provider latency、cost 或 availability。
 - safety lab 只验证 injected fake transport 状态转换，不验证链上、钱包或交易客户端。
 - UI 是只读 reference，不包含身份、权限管理或多人协作。
+- 粉丝贡献奖励目前在本 public repo 中只有设计披露；没有 proposal/round/plan 实现、真实贡献输入、社区投票产品或付款执行器。
 
 ## Evidence limits
 
@@ -18,6 +19,7 @@
 - 只有日期化脱敏运行聚合，没有原始市场、资金、社交渠道或真实用户证据。
 - 没有可靠性 SLA、性能基准、成本账单、用户研究、采用、收入或商业结果。
 - Owner 只批准了 public reference 可见性；没有对生产、资金、用户采用或商业结果作验收。
+- broader project 对 action-locked fan-reward preparation layer 的实现声明不能从本 public repo 独立复现，也不是 real-chain payout evidence。
 
 ## Legal and content limits
 
@@ -28,3 +30,5 @@
 denylist scan 是 defense in depth，不是秘密扫描产品或独立安全审计。它会阻止本项目明确禁止的高风险类别，但不能证明任何任意未来改动都没有漏洞。
 
 本地 server 只绑定 loopback；若使用者自行改变绑定地址、加入 proxy、provider、wallet 或写 API，就超出本仓验证和许可声明范围，需要新的 threat model、权限设计和测试。
+
+粉丝奖励从 documentation-only 进入真实执行还需要 final policy、受保护 signer/provider、exactly-once journal、nonce ownership、逐 receipt reconcile、partial-success recovery、stop control 和 separately authorized low-value UAT。仅添加一个 key file 或签名函数不满足这些条件。

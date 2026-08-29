@@ -53,6 +53,12 @@ confirmed revert 可以触发一次同 snapshot retry；pending 和 ambiguous �
 
 这种设计不能证明真实 transaction safety，却能公开说明“何时可以重试、何时必须停”的推理模型，而不泄露真实 transport 或 signer 实现。
 
+### 4.5 Documentation-only fan reward governance
+
+The broader product has an adjacent design question: after project revenue reaches one community treasury, how can evidence-backed contributor rewards be reviewed without giving market votes or model dialogue authority over money?
+
+The public answer is documented separately rather than copied from non-public source. The design freezes contribution facts, recipients, amounts and caps into deterministic digests and a Merkle commitment, uses an independent four-Agent `CONTRIBUTION_EVIDENCE_ONLY` threshold, and stops at an action-locked exact transfer plan. The public repository contains no implementation, signer, real address or payout evidence. See [Fan reward governance design](FAN_REWARD_GOVERNANCE.md).
+
 ## 5. Failure and recovery evidence
 
 实现期间出现过三个有代表性的本地失败：
@@ -76,7 +82,7 @@ confirmed revert 可以触发一次同 snapshot retry；pending 和 ambiguous �
 | Axis | Result |
 | --- | --- |
 | `CODE_PRESENT` | yes |
-| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 59 Node test cases plus deterministic validation and security scan passed |
+| `TESTED(FIXTURE/FAKE_TRANSPORT)` | 61 Node test cases plus deterministic validation and security scan passed |
 | `PUBLIC_REFERENCE_RELEASED` | yes; Owner-authorized public visibility and anonymous GitHub access verified |
 | `SANITIZED_RUNTIME_AGGREGATE` | date-stamped aggregate only; raw records absent and not publicly reproducible |
 | `DEPLOYED_DEMO` | `NOT_VALIDATED` |
@@ -99,7 +105,7 @@ Owner 已审阅并明确授权 public reference 发布。该决定只接受本�
 
 ## 9. Current limitations and next gate
 
-本仓没有真实 provider、真实 API、真实 market semantics、资金、社交、用户或部署证据。safety lab 只是 fake transport。UI 没有账号和权限系统。性能与成本没有测量，状态为 `NOT_MEASURED`。
+本仓没有真实 provider、真实 API、真实 market semantics、资金、社交、用户或部署证据。safety lab 只是 fake transport。UI 没有账号和权限系统。fan-reward governance 仍是 documentation-only，不能被描述成可连接 signer 的 executor。性能与成本没有测量，状态为 `NOT_MEASURED`。
 
 public visibility gate 已完成。下一阶段是保持公开安全扫描、处理外部 Issue/PR，并在稳定 revision 有足够样本后发布新的日期化聚合；这不要求复制生产源码或原始遥测。
 
