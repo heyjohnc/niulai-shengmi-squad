@@ -1,6 +1,6 @@
 {
   "name": "niulai-shengmi-squad",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Offline clean-room public reference for a four-agent, paper-only market-story timeline.",
   "type": "module",

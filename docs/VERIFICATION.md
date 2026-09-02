@@ -62,7 +62,7 @@ git rev-list --objects --all
 git fsck --no-reflogs --unreachable
 ```
 
-审计目标：新仓只有自己的 root commit 和后续 clean-room commits；不存在其他仓库 object、tag、release 或 remote history。公开前还需验证 clean worktree、exact remote/HEAD、Actions 成功和安全扫描 0 findings；公开后使用匿名网页、API、Raw 内容和 Actions API 验证可读性。
+审计目标：新仓只有自己的 root commit 和后续 clean-room commits；不存在其他仓库 object 或 remote history。首次公开前验证 clean worktree、exact remote/HEAD、Actions 成功和安全扫描 0 findings；公开后的 release 批次继续使用匿名网页、API、Raw 内容和 Actions API 验证可读性。公开 tag/release 只标记本 clean-room 仓自身的版本，不导入 private 工程历史。
 
 日期化运行聚合另做算术一致性、字段白名单和敏感形状检查。它不包含原始记录，也不能从本 public reference 独立重算。
 

@@ -17,7 +17,7 @@ This repository is an offline reference implementation. Security support covers 
 
 ## Reporting a vulnerability
 
-Use the repository's private security reporting channel while the repository remains private. Do not include credentials, private keys, personal data or real account/session material in a report. Describe the minimal reproduction against synthetic fixtures.
+Use GitHub's private vulnerability-reporting channel when it is available. If that channel is unavailable, open a minimal public Issue that contains no exploit details or sensitive material and asks the maintainer for a private contact path. Never include credentials, private keys, personal data, account/session material or non-public infrastructure details. Reproduce the issue against synthetic fixtures whenever possible.
 
 ## Changes that require a new threat model
 

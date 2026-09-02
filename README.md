@@ -6,7 +6,9 @@
 
 另有一个不足三票、不开仓、先跌后拉的观察/回旋镖 fixture，以及一个只能使用 injected fake transport 的 execution-safety-lab。
 
-当前状态为 `PUBLIC_REFERENCE_RELEASED`。公开参考仓与实际运行系统严格分离；线上只读产品入口是 [niulaishengmi.lol](https://niulaishengmi.lol)，该网站不是由本仓代码部署，也不能作为本仓 fixture/fake 测试的生产证明。
+当前版本为 `v0.2.1 / PUBLIC_REFERENCE_RELEASED`。公开参考仓与实际运行系统严格分离；线上只读产品入口是 [niulaishengmi.lol](https://niulaishengmi.lol)，该网站不是由本仓代码部署，也不能作为本仓 fixture/fake 测试的生产证明。
+
+完整工程事实、企业证据和正式运行实现保留在独立的 private 权威仓中。本 public clean-room reference 不会同步 signer、钱包、真实交易执行、社交发布器、账号绑定、原始时间线、provider 回执或私人运维配置；后续只按里程碑发布可以独立复核的脱敏设计与聚合证据。
 
 ## 如果这个架构对你有用
 
